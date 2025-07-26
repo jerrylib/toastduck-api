@@ -1,7 +1,7 @@
 services:
   # PostgreSQL Database
   postgres:
-    image: registry.cn-hangzhou.aliyuncs.com/eryajf/postgres:16.2
+    image: postgres:15-alpine
     container_name: medusa_postgres
     restart: unless-stopped
     environment:
@@ -17,7 +17,7 @@ services:
 
   # Redis
   redis:
-    image: registry.cn-hangzhou.aliyuncs.com/eryajf/redis:7.2.4-alpine
+    image: redis:7-alpine
     container_name: medusa_redis
     restart: unless-stopped
     ports:
@@ -36,7 +36,7 @@ services:
       - postgres
       - redis
     ports:
-      - "80:9000"
+      - "9000:9000"
     environment:
       - NODE_ENV=production
       - DATABASE_URL=postgres://postgres:postgres@postgres:5432/medusa-store

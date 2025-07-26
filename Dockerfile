@@ -1,5 +1,5 @@
 # Development Dockerfile for Medusa
-FROM node:latest
+FROM node:20-alpine
 
 # Set working directory
 WORKDIR /server
