@@ -1,0 +1,10 @@
+
+docker login --username=libin_0917@qq.com crpi-49ga0gey2m9bonto.cn-shanghai.personal.cr.aliyuncs.com
+
+docker pull crpi-49ga0gey2m9bonto.cn-shanghai.personal.cr.aliyuncs.com/ferris0917/toastduck-web-medusa:v0.0.1
+
+docker push crpi-49ga0gey2m9bonto.cn-shanghai.personal.cr.aliyuncs.com/ferris0917/toastduck-web-medusa:v0.0.1
+
+docker build -t crpi-49ga0gey2m9bonto.cn-shanghai.personal.cr.aliyuncs.com/ferris0917/toastduck-web-medusa:v0.0.1 .
+
+docker run  --name nginx -d -p 80:80 --net host -v /etc/nginx/:/etc/nginx/ nginx
