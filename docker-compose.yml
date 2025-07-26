@@ -1,7 +1,7 @@
 services:
   # PostgreSQL Database
   postgres:
-    image: postgres:15-alpine
+    image: registry.cn-hangzhou.aliyuncs.com/eryajf/postgres:16.2
     container_name: medusa_postgres
     restart: unless-stopped
     environment:
@@ -17,7 +17,7 @@ services:
 
   # Redis
   redis:
-    image: redis:7-alpine
+    image: registry.cn-hangzhou.aliyuncs.com/eryajf/redis:7.2.4-alpine
     container_name: medusa_redis
     restart: unless-stopped
     ports:
