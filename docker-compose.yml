@@ -41,6 +41,9 @@ services:
       - NODE_ENV=production
       - DATABASE_URL=postgres://postgres:postgres@postgres:5432/medusa-store
       - REDIS_URL=redis://redis:6379
+      - STORE_CORS=http://localhost:8000,https://docs.medusajs.com,https://breaker.toastduck.com
+      - ADMIN_CORS=http://localhost:5173,http://localhost:9000,https://docs.medusajs.com,http://47.100.50.239
+      - AUTH_CORS=http://localhost:5173,http://localhost:9000,http://localhost:8000,https://docs.medusajs.com,https://breaker.toastduck.com,http://47.100.50.239
     volumes:
       - .:/app
       - /app/node_modules
