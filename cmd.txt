@@ -8,3 +8,21 @@ docker push crpi-49ga0gey2m9bonto.cn-shanghai.personal.cr.aliyuncs.com/ferris091
 docker build -t crpi-49ga0gey2m9bonto.cn-shanghai.personal.cr.aliyuncs.com/ferris0917/toastduck-web-medusa:v0.0.1 .
 
 docker run  --name nginx -d -p 80:80 --net host -v /etc/nginx/:/etc/nginx/ nginx
+
+docker compose run --rm medusa npx medusa user -e demo@163.com -p abc
+
+docker tag 7cdef5a331927fafa250be6166052d8599bf5eb7b014342538c2cc79b70a081f crpi-49ga0gey2m9bonto.cn-shanghai.personal.cr.aliyuncs.com/ferris0917/node:20-alpine
+docker push crpi-49ga0gey2m9bonto.cn-shanghai.personal.cr.aliyuncs.com/ferris0917/node:20-alpine
+docker tag 7cdef5a331927fafa250be6166052d8599bf5eb7b014342538c2cc79b70a081f node:20-alpine
+
+docker tag 7cdef5a331927fafa250be6166052d8599bf5eb7b014342538c2cc79b70a081f crpi-49ga0gey2m9bonto.cn-shanghai.personal.cr.aliyuncs.com/ferris0917/node:20-alpine
+
+docker tag sha256:f218e591b571a4129aa29a8566b597d849fba21af7be853d31b03122b20db5e9 crpi-49ga0gey2m9bonto.cn-shanghai.personal.cr.aliyuncs.com/ferris0917/redis:7-alpine
+docker push crpi-49ga0gey2m9bonto.cn-shanghai.personal.cr.aliyuncs.com/ferris0917/redis:7-alpine
+docker pull crpi-49ga0gey2m9bonto.cn-shanghai.personal.cr.aliyuncs.com/ferris0917/redis:7-alpine
+docker tag sha256:f218e591b571a4129aa29a8566b597d849fba21af7be853d31b03122b20db5e9 redis:7-alpine
+
+docker tag sha256:546a2cf4818277e5cde4195a3c5fd5ada3257effedba684dc2fe914d508b66c2 crpi-49ga0gey2m9bonto.cn-shanghai.personal.cr.aliyuncs.com/ferris0917/postgres:15-alpine
+docker push crpi-49ga0gey2m9bonto.cn-shanghai.personal.cr.aliyuncs.com/ferris0917/postgres:15-alpine
+docker pull crpi-49ga0gey2m9bonto.cn-shanghai.personal.cr.aliyuncs.com/ferris0917/postgres:15-alpine
+docker tag sha256:546a2cf4818277e5cde4195a3c5fd5ada3257effedba684dc2fe914d508b66c2 postgres:15-alpine
