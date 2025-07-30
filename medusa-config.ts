@@ -22,6 +22,13 @@ module.exports = defineConfig({
   admin: {
     disable: process.env.DISABLE_MEDUSA_ADMIN === "true",
     backendUrl: process.env.MEDUSA_BACKEND_URL,
+    vite: () => {
+      return {
+        server: {
+          allowedHosts: [".toastduck.com", '.medusa'], // Replace with your actual host, include the leading dot
+        },
+      }
+    }
   },
   modules: [
     {

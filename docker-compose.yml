@@ -1,7 +1,7 @@
 services:
   # PostgreSQL Database
   postgres:
-    image: postgres:15-alpine
+    image: crpi-49ga0gey2m9bonto.cn-shanghai.personal.cr.aliyuncs.com/ferris0917/postgres:15-alpine
     container_name: medusa_postgres
     restart: unless-stopped
     environment:
@@ -17,33 +17,72 @@ services:
 
   # Redis
   redis:
-    image: redis:7-alpine
+    image: crpi-49ga0gey2m9bonto.cn-shanghai.personal.cr.aliyuncs.com/ferris0917/redis:7-alpine
     container_name: medusa_redis
     restart: unless-stopped
     ports:
       - "6379:6379"
     networks:
       - medusa_network
-
+  # Nginx Server
+  nginx:
+    image: crpi-49ga0gey2m9bonto.cn-shanghai.personal.cr.aliyuncs.com/ferris0917/nginx:1.24
+    container_name: medusa_nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - medusa
+    networks:
+      - medusa_network
+    volumes:
+      - /etc/nginx/html:/etc/nginx/html
+      - /etc/nginx/conf.d:/etc/nginx/conf.d
+      - /etc/nginx/certs:/etc/nginx/certs
+  # Web Server
+  web:
+    image: crpi-49ga0gey2m9bonto.cn-shanghai.personal.cr.aliyuncs.com/ferris0917/toastduck-web:latest
+    container_name: medusa_web
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    depends_on:
+      - medusa
+    environment:
+      - MEDUSA_BACKEND_URL=http://medusa:9000
+      - NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY=pk_1957b64aa8db978c6d8f10f87effc334677723a2a1ade436871da0a37f9c30cf
+      - NEXT_PUBLIC_BASE_URL=http://web:8000
+      - NEXT_PUBLIC_DEFAULT_REGION=us
+      - REVALIDATE_SECRET=supersecret
+      - NEXT_PUBLIC_STRIPE_KEY=
+    networks:
+      - medusa_network
   # Medusa Server
   # This service runs the Medusa backend application
   # and the admin dashboard.
   medusa:
     build: .
+    image: crpi-49ga0gey2m9bonto.cn-shanghai.personal.cr.aliyuncs.com/ferris0917/toastduck-api:latest
     container_name: medusa_backend
     restart: unless-stopped
     depends_on:
       - postgres
       - redis
     ports:
-      - "80:9000"
+      - "9000:9000"
     environment:
       - NODE_ENV=production
+      - MEDUSA_WORKER_MODE=server
+      - JWT_SECRET=supersecret
+      - COOKIE_SECRET=supersecret
+      - DISABLE_MEDUSA_ADMIN=false
+      - MEDUSA_BACKEND_URL=http://localhost:9000
       - DATABASE_URL=postgres://postgres:postgres@postgres:5432/medusa-store
       - REDIS_URL=redis://redis:6379
-      - STORE_CORS=http://localhost:5173,,http://localhost:9000
-      - ADMIN_CORS=http://localhost:5173
-      - AUTH_CORS=http://localhost:5173,http://localhost:9000,http://localhost:8000,https://docs.medusajs.com,https://breaker.toastduck.com,http://47.100.50.239
+      - STORE_CORS=http://localhost:8000,https://docs.medusajs.com,https://toastduck.com
+      - ADMIN_CORS=http://localhost:5173,http://localhost:9000,https://docs.medusajs.com,https://www.toastduck.com
+      - AUTH_CORS=http://localhost:5173,http://localhost:9000,http://localhost:8000,https://docs.medusajs.com,https://www.toastduck.com,https://toastduck.com
     volumes:
       - .:/app
       - /app/node_modules
