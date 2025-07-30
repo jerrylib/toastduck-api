@@ -40,6 +40,7 @@ services:
       - /etc/nginx/html:/etc/nginx/html
       - /etc/nginx/conf.d:/etc/nginx/conf.d
       - /etc/nginx/certs:/etc/nginx/certs
+      - /var/log/nginx:/var/log/nginx
   # Web Server
   web:
     image: crpi-49ga0gey2m9bonto.cn-shanghai.personal.cr.aliyuncs.com/ferris0917/toastduck-web:latest
@@ -51,7 +52,7 @@ services:
       - medusa
     environment:
       - MEDUSA_BACKEND_URL=http://medusa:9000
-      - NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY=pk_1957b64aa8db978c6d8f10f87effc334677723a2a1ade436871da0a37f9c30cf
+      - NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY=pk_5a85d2d8e12f1f792c8956973021041b0a4229f9cd2e3e7f38f2d4aea86654da
       - NEXT_PUBLIC_BASE_URL=http://web:8000
       - NEXT_PUBLIC_DEFAULT_REGION=us
       - REVALIDATE_SECRET=supersecret

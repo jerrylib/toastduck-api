@@ -6,10 +6,10 @@ module.exports = defineConfig({
   projectConfig: {
     workerMode: process.env.MEDUSA_WORKER_MODE as "shared" | "worker" | "server",
     databaseUrl: process.env.DATABASE_URL,
-    databaseDriverOptions: {
-      ssl: false,
-      sslmode: "disable",
-    },
+    // databaseDriverOptions: {
+    //   ssl: false,
+    //   sslmode: "disable",
+    // },
     redisUrl: process.env.REDIS_URL,
     http: {
       storeCors: process.env.STORE_CORS!,

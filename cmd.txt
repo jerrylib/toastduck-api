@@ -26,3 +26,16 @@ docker tag sha256:546a2cf4818277e5cde4195a3c5fd5ada3257effedba684dc2fe914d508b66
 docker push crpi-49ga0gey2m9bonto.cn-shanghai.personal.cr.aliyuncs.com/ferris0917/postgres:15-alpine
 docker pull crpi-49ga0gey2m9bonto.cn-shanghai.personal.cr.aliyuncs.com/ferris0917/postgres:15-alpine
 docker tag sha256:546a2cf4818277e5cde4195a3c5fd5ada3257effedba684dc2fe914d508b66c2 postgres:15-alpine
+
+docker tag sha256:6c0218f1687660914d2ce279489e9b6d62a5a48d06ab2e27b7710c19d5e904e5 crpi-49ga0gey2m9bonto.cn-shanghai.personal.cr.aliyuncs.com/ferris0917/nginx:1.24
+docker push crpi-49ga0gey2m9bonto.cn-shanghai.personal.cr.aliyuncs.com/ferris0917/toastduck-api-medusa:latest
+docker pull crpi-49ga0gey2m9bonto.cn-shanghai.personal.cr.aliyuncs.com/ferris0917/toastduck-api-medusa:latest
+docker tag sha256:c8c07ed54f4eb4d03c92e2b7a39e52122ff120db1b66a821ce6f9ed9eb420d32 toastduck-api-medusa:latest
+
+
+docker compose stop nginx
+docker compose rm nginx -f
+docker compose up -d
+docker compose logs -f
+
+curl -H "x-publishable-api-key:pk_5a85d2d8e12f1f792c8956973021041b0a4229f9cd2e3e7f38f2d4aea86654da" http://localhost:9000/store/regions
