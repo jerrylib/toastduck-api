@@ -65,6 +65,23 @@ module.exports = defineConfig({
         },
       },
     },
+    {
+      resolve: "@medusajs/medusa/payment",
+      options: {
+        providers: [
+          {
+            resolve: "./src/modules/ttpayment",
+            id: "tt",
+            options: {
+              // TODO: 替换T/T收款信息
+              bank_name: "China Construction Bank",
+              account_name: "Fujian Toast Duck International Business Co., Ltd.",
+              bank_account: "6xxx xxxx xxxx xxx",
+            },
+          },
+        ],
+      },
+    },
   ],
 
 })
