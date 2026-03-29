@@ -1,0 +1,14 @@
+[build]
+builder = "docker"
+buildService = "Node.js"
+
+[deploy]
+numReplicas = 1
+restartPolicyType = "on-failure"
+restartPolicyMaxRetries = 10
+
+[ports]
+httpPort = 9000
+
+[env]
+NODE_ENV = "production"
