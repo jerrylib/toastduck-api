@@ -1,8 +1,4 @@
-[build]
-builder = "docker"
+name = "toastduck-api"
 
-[deploy]
-numReplicas = 1
-
-[ports]
-httpPort = 9000
+[services.web]
+ports = 9000
