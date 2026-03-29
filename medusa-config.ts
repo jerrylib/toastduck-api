@@ -25,7 +25,7 @@ module.exports = defineConfig({
     vite: () => {
       return {
         server: {
-          allowedHosts: [".toastduck.com", '.medusa'], // Replace with your actual host, include the leading dot
+          allowedHosts: [".toastduck.com", '.medusa', ".toastduck.online"], // Replace with your actual host, include the leading dot
         },
       }
     }
