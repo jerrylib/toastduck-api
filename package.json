@@ -14,6 +14,7 @@
   ],
   "scripts": {
     "build": "medusa build",
+    "foldadapter": "node -e \"require('fs').cpSync('.medusa/server/public/admin', 'public/admin', {recursive: true})\"",
     "seed": "medusa exec ./src/scripts/seed.ts",
     "start": "medusa start",
     "dev": "medusa develop",
