@@ -30,6 +30,19 @@ module.exports = defineConfig({
       }
     }
   },
+  plugins: [
+    {
+      resolve: "@alphabite/medusa-paypal",
+      options: {
+        clientId: process.env.PAYPAL_CLIENT_ID,
+        clientSecret: process.env.PAYPAL_CLIENT_SECRET,
+        isSandbox: process.env.PAYPAL_IS_SANDBOX === "true",
+        webhookId: process.env.PAYPAL_WEBHOOK_ID,
+        includeShippingData: false,
+        includeCustomerData: false,
+      },
+    },
+  ],
   modules: [
     {
       resolve: "@medusajs/medusa/file",
@@ -79,6 +92,18 @@ module.exports = defineConfig({
               bank_account: "6xxx xxxx xxxx xxx",
             },
           },
+          {
+            resolve: "@alphabite/medusa-paypal/providers/paypal",
+            id: "paypal",
+            options: {
+              clientId: process.env.PAYPAL_CLIENT_ID,
+              clientSecret: process.env.PAYPAL_CLIENT_SECRET,
+              isSandbox: process.env.PAYPAL_IS_SANDBOX === "true",
+              webhookId: process.env.PAYPAL_WEBHOOK_ID,
+              includeShippingData: false,
+              includeCustomerData: false,
+            },
+          }
         ],
       },
     },
