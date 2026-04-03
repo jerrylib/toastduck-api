@@ -48,12 +48,24 @@ module.exports = defineConfig({
       resolve: "@medusajs/medusa/file",
       options: {
         providers: [
+          // {
+          //   resolve: "@medusajs/medusa/file-local",
+          //   id: "local",
+          //   options: {
+          //     backend_url: `${process.env.MEDUSA_BACKEND_URL}/static`,
+          //   },
+          // },
           {
-            resolve: "@medusajs/medusa/file-local",
-            id: "local",
+            resolve: "@medusajs/file-s3",
             options: {
-              backend_url: `${process.env.MEDUSA_BACKEND_URL}/static`,
-            },
+              file_url: process.env.S3_FILE_URL,
+              endpoint: process.env.S3_API_ENDPOINT,
+              bucket: "toastduck-s3",
+              region: "auto",
+              access_key_id: process.env.R2_ACCESS_KEY,
+              secret_access_key: process.env.R2_SECRET_KEY,
+              s3ForcePathStyle: true
+            }
           },
         ],
       },
