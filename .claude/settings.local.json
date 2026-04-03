@@ -6,6 +6,7 @@
       "Bash(npm view:*)",
       "WebFetch(domain:github.com)",
       "Bash(find:*)"
+      "Bash(gh pr:*)"
     ]
   }
 }
