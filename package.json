@@ -32,6 +32,7 @@
     "@medusajs/admin-sdk": "2.8.8",
     "@medusajs/cli": "2.8.8",
     "@medusajs/dashboard": "2.8.8",
+    "@medusajs/file-s3": "^2.13.5",
     "@medusajs/framework": "2.8.8",
     "@medusajs/medusa": "2.8.8",
     "@medusajs/types": "2.8.8",
