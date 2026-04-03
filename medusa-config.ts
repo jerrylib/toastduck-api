@@ -79,6 +79,14 @@ module.exports = defineConfig({
               bank_account: "6xxx xxxx xxxx xxx",
             },
           },
+          {
+            resolve: "@medusajs/medusa/payment-stripe",
+            id: "stripe",
+            options: {
+              apiKey: process.env.STRIPE_API_KEY,
+              webhookSecret: process.env.STRIPE_WEBHOOK_SECRET,
+            },
+          },
         ],
       },
     },
