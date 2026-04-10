@@ -105,6 +105,22 @@ module.exports = defineConfig({
             },
           },
           {
+            resolve: "./src/modules/xTransferPayment",
+            id: "xtransfer",
+            options: {
+              account_number: 21237521002827,
+              account_name: "Toastduck International Business Co., Limited",
+              bank_name: "Shanghai Pudong Development Bank Hong Kong Branch",
+              bank_code: 345,
+              branch_code: 730,
+              bank_address: "SHANGHAI PUDONG DEVELOPMENT BANK HONGKONG BRANCH, FLOOR 30, SPD BANK TOWER, 1 HENNESSY ROAD, CENTRAL, HONG KONG",
+              country_region: "Hong Kong (China)",
+              type_of_account: "Business Account",
+              payment_message: "Please include the following memo/message to receiver when making a payment: [Buyer Name] [Invoice/Contract Number] [Product]",
+              swift_bic_code: "SPDBHKHHXXX",
+            },
+          },
+          {
             resolve: "@alphabite/medusa-paypal/providers/paypal",
             id: "paypal",
             options: {
