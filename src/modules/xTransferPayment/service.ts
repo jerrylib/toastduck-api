@@ -25,9 +25,9 @@ type Options = {
 class xTransferPaymentProviderService extends AbstractPaymentProvider<
   Options
 > {
-  static identifier = "ttlater"
+  static identifier = "xtransferpayment"
   options: Options
-  constructor(container, options) {
+  constructor(container:any, options:any) {
     super(container)
     this.options = options
   }

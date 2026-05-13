@@ -140,6 +140,20 @@ module.exports = defineConfig({
               webhookSecret: process.env.STRIPE_WEBHOOK_SECRET,
             },
           },
+          {
+            resolve: "./src/modules/picture-payment",
+            id: "wechat",
+            options: {
+              pic_url: 'https://images.toastduck.fun/wechat.png',
+            },
+          },
+          {
+            resolve: "./src/modules/picture-payment",
+            id: "alipay",
+            options: {
+              pic_url: 'https://images.toastduck.fun/alipay2.jpg',
+            },
+          },
         ],
       },
     },

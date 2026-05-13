@@ -22,10 +22,10 @@ type Options = {
   }
 }
 
-class TTPaymentProviderService extends AbstractPaymentProvider<
+class PicturePaymentProviderService extends AbstractPaymentProvider<
   Options
 > {
-  static identifier = "ttlater"
+  static identifier = "picturepayment"
   options: Options
   constructor(container:any, options:any) {
     super(container)
@@ -68,4 +68,4 @@ class TTPaymentProviderService extends AbstractPaymentProvider<
   }
 }
 
-export default TTPaymentProviderService
+export default PicturePaymentProviderService
