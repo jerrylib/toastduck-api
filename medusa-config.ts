@@ -48,13 +48,6 @@ module.exports = defineConfig({
       resolve: "@medusajs/medusa/file",
       options: {
         providers: [
-          // {
-          //   resolve: "@medusajs/medusa/file-local",
-          //   id: "local",
-          //   options: {
-          //     backend_url: `${process.env.MEDUSA_BACKEND_URL}/static`,
-          //   },
-          // },
           {
             resolve: "@medusajs/file-s3",
             options: {
@@ -108,16 +101,16 @@ module.exports = defineConfig({
             resolve: "./src/modules/xTransferPayment",
             id: "xtransfer",
             options: {
-              account_number: 21237521002827,
+              account_number: 63003681474,
               account_name: "Toastduck International Business Co., Limited",
-              bank_name: "Shanghai Pudong Development Bank Hong Kong Branch",
-              bank_code: 345,
-              branch_code: 730,
-              bank_address: "SHANGHAI PUDONG DEVELOPMENT BANK HONGKONG BRANCH, FLOOR 30, SPD BANK TOWER, 1 HENNESSY ROAD, CENTRAL, HONG KONG",
+              bank_name: "JPMorgan Chase Bank N.A., Hong Kong Branch",
+              bank_code: '007',
+              branch_code: 863,
+              bank_address: "18/F, 20/F, 22-29/F, CHATER HOUSE, 8 CONNAUGHT ROAD CENTRAL, HONG KONG",
               country_region: "Hong Kong (China)",
               type_of_account: "Business Account",
-              payment_message: "Please include the following memo/message to receiver when making a payment: [Buyer Name] [Invoice/Contract Number] [Product]",
-              swift_bic_code: "SPDBHKHHXXX",
+              payment_message: "Please include [Buyer's Name, Invoice/Contract Number, and Product Name] in the memo or note section when making the payment.",
+              swift_bic_code: "CHASHKHH（CHASHKHHXXX*If 11 characters are required）",
             },
           },
           {
@@ -144,14 +137,14 @@ module.exports = defineConfig({
             resolve: "./src/modules/picture-payment",
             id: "wechat",
             options: {
-              pic_url: 'https://images.toastduck.fun/wechat.png',
+              pic_url: 'https://images.toastduck.com/wechat.png',
             },
           },
           {
             resolve: "./src/modules/picture-payment",
             id: "alipay",
             options: {
-              pic_url: 'https://images.toastduck.fun/alipay2.jpg',
+              pic_url: 'https://images.toastduck.com/alipay2.jpg',
             },
           },
         ],
